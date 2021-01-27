@@ -2,7 +2,6 @@ import sys, os, time
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 BYS_LOGIN = "https://bys.marmara.edu.tr/v2/Account/Login"
 SUNULAN_DERSLER = "http://bys.marmara.edu.tr/ogrenci/ogr0202/default.aspx?lang=tr-TR"
@@ -10,7 +9,6 @@ SUNULAN_DERSLER = "http://bys.marmara.edu.tr/ogrenci/ogr0202/default.aspx?lang=t
 def main(username, password):
     print("username: " + username)
     print("password: " + password)
-
 
     path = os.getcwd() + '/' + "chromedriver"
     driver = webdriver.Chrome(executable_path=path)
