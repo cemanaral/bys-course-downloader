@@ -14,11 +14,12 @@ def main(username, password):
     driver.get(BYS_LOGIN)
     input()
 
-
+    exit(0)
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        raise Exception("Invalid Input\nUsage: python bys.py username password")
+        print("Invalid Input\nUsage: python bys.py username password")
+        exit(-1)
 
     main(username=sys.argv[1], password=sys.argv[2])
