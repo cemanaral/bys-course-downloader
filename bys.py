@@ -1,19 +1,33 @@
-import sys, os
+import sys, os, time
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 BYS_LOGIN = "https://bys.marmara.edu.tr/v2/Account/Login"
+SUNULAN_DERSLER = "http://bys.marmara.edu.tr/ogrenci/ogr0202/default.aspx?lang=tr-TR"
 
 def main(username, password):
     print("username: " + username)
     print("password: " + password)
 
+
     path = os.getcwd() + '/' + "chromedriver"
     driver = webdriver.Chrome(executable_path=path)
     driver.get(BYS_LOGIN)
-    input()
 
+    username_box = driver.find_element_by_id("Username")
+    password_box = driver.find_element_by_id("Password")
+    login_button = driver.find_element_by_id("LoginButton")
+
+    username_box.send_keys(username)
+    password_box.send_keys(password)
+    login_button.click()
+
+    time.sleep(2) # otherwise it does not get to Sunulan Dersler
+    driver.get(SUNULAN_DERSLER)
+
+    input()
     exit(0)
 
 
