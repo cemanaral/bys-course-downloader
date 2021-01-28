@@ -12,6 +12,11 @@ def main(username, password):
     print("password: " + password)
 
     path = os.getcwd() + '/' + "chromedriver"
+
+    options = webdriver.chrome.options.Options()
+    options.headless = True
+    print(options.arguments)
+
     driver = webdriver.Chrome(executable_path=path)
     driver.get(BYS_LOGIN)
 
