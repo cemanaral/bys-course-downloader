@@ -7,6 +7,7 @@ from selenium import webdriver
 
 BYS_LOGIN = "https://bys.marmara.edu.tr/v2/Account/Login"
 SUNULAN_DERSLER = "http://bys.marmara.edu.tr/ogrenci/ogr0202/default.aspx?lang=tr-TR"
+DELAY = 2
 
 def main(username, password):
     print("username: " + username)
@@ -24,20 +25,18 @@ def main(username, password):
     password_box.send_keys(password)
     login_button.click()
 
-    time.sleep(2) # otherwise it does not get to Sunulan Dersler
+    time.sleep(DELAY) # otherwise it does not get to Sunulan Dersler
     driver.get(SUNULAN_DERSLER)
 
     ustbirim = driver.find_element_by_name("org1$_cmbUstBirim")
     ustbirim.click()
-    # ustbirim.find_element_by_partial_link_text("Mühendislik Fakültesi").click()
 
-    """driver.execute_script("document.getElementById('org1__cmbUstBirim_Input').value = 'Mühendislik Fakültesi'")"""
+    time.sleep(DELAY)
+    muhendislik_fakultesi = driver.find_element_by_xpath("//*[ text() = 'Mühendislik Fakültesi' ]")
+    muhendislik_fakultesi.click()
 
+    time.sleep(DELAY)
 
-    """
-    select_ustbirim = webdriver.support.ui.Select(ustbirim)
-    select_ustbirim.select_by_visible_text("Mühendislik Fakültesi")
-    """
 
     input()
     exit(0)
