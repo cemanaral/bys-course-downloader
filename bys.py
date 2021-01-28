@@ -3,8 +3,6 @@ import sys, os, time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-
-
 BYS_LOGIN = "https://bys.marmara.edu.tr/v2/Account/Login"
 SUNULAN_DERSLER = "http://bys.marmara.edu.tr/ogrenci/ogr0202/default.aspx?lang=tr-TR"
 DELAY = 2
@@ -36,10 +34,19 @@ def main(username, password):
     muhendislik_fakultesi.click()
 
     time.sleep(DELAY)
+    format = driver.find_element_by_name("RptExport1$cmbExport")       # RptExport1$cmbExport
+    format.click()
+    
+    time.sleep(DELAY)
+    excel = driver.find_element_by_xpath("//*[ text() = 'Excel' ]")
+    excel.click()
 
+    time.sleep(DELAY)
+    download = driver.find_element_by_name("RptExport1$btnExportTo")
+    download.click()
 
     input()
-    exit(0)
+
 
 
 if __name__ == "__main__":
