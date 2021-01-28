@@ -3,6 +3,8 @@ import sys, os, time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+
+
 BYS_LOGIN = "https://bys.marmara.edu.tr/v2/Account/Login"
 SUNULAN_DERSLER = "http://bys.marmara.edu.tr/ogrenci/ogr0202/default.aspx?lang=tr-TR"
 
@@ -24,6 +26,18 @@ def main(username, password):
 
     time.sleep(2) # otherwise it does not get to Sunulan Dersler
     driver.get(SUNULAN_DERSLER)
+
+    ustbirim = driver.find_element_by_name("org1$_cmbUstBirim")
+    ustbirim.click()
+    # ustbirim.find_element_by_partial_link_text("Mühendislik Fakültesi").click()
+
+    """driver.execute_script("document.getElementById('org1__cmbUstBirim_Input').value = 'Mühendislik Fakültesi'")"""
+
+
+    """
+    select_ustbirim = webdriver.support.ui.Select(ustbirim)
+    select_ustbirim.select_by_visible_text("Mühendislik Fakültesi")
+    """
 
     input()
     exit(0)
