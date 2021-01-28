@@ -17,7 +17,6 @@ def main(username, password):
     options.headless = True
 
     driver = webdriver.Chrome(executable_path=path, options=options)
-    driver.get(BYS_LOGIN)
 
     print("Logging in...")
     login(driver, username, password)
@@ -30,6 +29,7 @@ def main(username, password):
 
 
 def login(driver, username, password):
+    driver.get(BYS_LOGIN)
     username_box = driver.find_element_by_id("Username")
     password_box = driver.find_element_by_id("Password")
     login_button = driver.find_element_by_id("LoginButton")
