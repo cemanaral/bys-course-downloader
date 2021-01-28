@@ -1,6 +1,4 @@
 import sys, os, time
-
-from bs4 import BeautifulSoup
 from selenium import webdriver
 
 BYS_LOGIN = "https://bys.marmara.edu.tr/v2/Account/Login"
