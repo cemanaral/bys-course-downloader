@@ -21,11 +21,11 @@ def main(username, password):
 
     print("Logging in...")
     login(driver, username, password)
-    print("Logged in successfully!")
+    print("Logged in successfully.")
 
     print("Downloading course list...")
     download_in_excel(driver)
-    print("Downloaded successfully! Check your Downloads folder.")
+    print("Downloaded successfully at " + os.getcwd())
 
 
 
@@ -61,6 +61,7 @@ def download_in_excel(driver):
     time.sleep(DELAY)
     download = driver.find_element_by_name("RptExport1$btnExportTo")
     download.click()
+    time.sleep(DELAY*4)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
