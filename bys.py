@@ -15,9 +15,8 @@ def main(username, password):
 
     options = webdriver.chrome.options.Options()
     options.headless = True
-    print(options.arguments)
 
-    driver = webdriver.Chrome(executable_path=path)
+    driver = webdriver.Chrome(executable_path=path, options=options)
     driver.get(BYS_LOGIN)
 
     print("Logging in...")
